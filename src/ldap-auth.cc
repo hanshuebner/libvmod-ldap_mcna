@@ -39,7 +39,9 @@ public:
       _base_dn(base_dn),
       _filter_format(filter_format)
   {
-    if (_realms.find(_name) != _realms.end()) {
+    map<string, Realm*>::const_iterator old = _realms.find(_name);
+    if (old != _realms.end()) {
+      delete (*old).second;
       _realms.erase(_name);
     }
     _realms[_name] = this;
