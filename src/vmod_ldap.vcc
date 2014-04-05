@@ -1,0 +1,4 @@
+Module ldap
+Init init_function
+Function BOOL basic_auth(STRING, STRING)
+Function VOID make_realm(STRING, STRING, STRING, STRING, STRING, STRING)
