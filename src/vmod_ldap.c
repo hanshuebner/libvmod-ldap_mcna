@@ -7,6 +7,19 @@
 
 #include "vcc_if.h"
 
+// FIXME: Locking
+
+// The realms map should be protected so that inserts and lookups
+// can't conflict.  There is probably liitle chance that this grows
+// into a real problem as people will usually initialize their realms
+// from vcl_init, but then, you never know.  This is why the lock
+// initialization code below is still here, it needs to be moved to
+// ldap-auth.cc and the proper calls need to be added.
+
+// The authentication process itself uses no global resources, so
+// there should be no concurrency issues other than the unprotected
+// Realm::_realms map.
+
 //Global rwlock, for all read/modification operations on the data structure
 pthread_rwlock_t vmodth_rwlock;
 #define LOCK_READ() assert(pthread_rwlock_rdlock(&vmodth_rwlock) == 0);
