@@ -1,4 +1,4 @@
-Summary: Request rate limiting VMOD for Varnish
+Summary: LDAP authentication VMOD for Varnish
 Name: vmod-ldap
 Version: 3-1.0
 Release: 1%{?dist}
@@ -10,7 +10,7 @@ Requires: varnish > 3.0
 BuildRequires: make, python-docutils
 
 %description
-Request rate limiting VMOD for Varnish
+LDAP authentication VMOD for Varnish
 
 %prep
 %setup -n libvmod-ldap
@@ -39,5 +39,3 @@ rm -rf %{buildroot}
 %{_mandir}/man?/*
 
 %changelog
-* Fri Dec 13 2013 Lasse Karstensen <lkarsten@varnish-software.com> - 3-1.0
-- Initial version.
